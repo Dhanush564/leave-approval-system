@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Management</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons (optional) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <style>
+        img {
+            height: 75px;
+            width: 75px;
+        }
+        /* Style for the left menu */
+        .left-menu {
+            border: 1px solid #dee2e6;
+            border-radius: 0.25rem;
+        }
+        .left-menu .list-group-item {
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            border-bottom: 1px solid #dee2e6;
+        }
+        .left-menu .list-group-item:last-child {
+            border-bottom: none;
+        }
+    </style>
+
+    <script>
+        function displayContent(id) {
+            var sections = ['staff-profile', 'add-staff', 'leaves', 'students'];
+            sections.forEach(function(section) {
+                document.getElementById(section).style.display = 'none';
+            });
+            document.getElementById(id).style.display = 'block';
+        }
+
+        function logout() {
+            window.location.href = 'indexx.html';
+        }
+    </script>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light text-light bg-dark">
+        <div class="container">
+            <a class="navbar-brand text-light" href="#">
+                <img src="logo.png" class="img-fluid" alt="">
+                Staff Management
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active text-light" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="/contact">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="/about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="/sign">Sign up</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="#" onclick="logout()">Log out</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container mt-5">
+        <div class="row">
+            <!-- Left Menu -->
+            <div class="col-md-3">
+                <div class="left-menu">
+                    <ul class="list-group">
+                        <li class="list-group-item" onclick="displayContent('staff-profile')">Staff Profile</li>
+                        <li class="list-group-item" onclick="displayContent('add-staff')">Add Staff</li>
+                        <li class="list-group-item" onclick="displayContent('leaves')">Leaves</li>
+                        <li class="list-group-item" onclick="displayContent('students')">Students</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Content Section -->
+            <div class="col-md-9">
+                <div class="card p-4">
+                    <!-- Staff Profile Section -->
+                    <div id="staff-profile">
+                        <h1 class="text-center">Staff Profile</h1>
+                        <div class="mb-3">
+                            <label class="form-label">Staff Name:</label>
+                            <p>John</p>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Staff ID:</label>
+                            <p>STF001</p>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Email:</label>
+                            <p>john@kce.ac.in</p>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Phone:</label>
+                            <p>8300301161</p>
+                        </div>
+                    </div>
+
+                    <!-- Add Staff Section -->
+                    <div id="add-staff" style="display: none;">
+                        <h1 class="text-center">Add Staff</h1>
+                        <form>
+                            <div class="mb-3">
+                                <label for="newStaffName" class="form-label">Staff Name:</label>
+                                <input type="text" class="form-control" id="newStaffName" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="newStaffId" class="form-label">Staff ID:</label>
+                                <input type="text" class="form-control" id="newStaffId" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="newStaffEmail" class="form-label">Email:</label>
+                                <input type="email" class="form-control" id="newStaffEmail" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="newStaffPhone" class="form-label">Phone:</label>
+                                <input type="tel" class="form-control" id="newStaffPhone" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Add Staff</button>
+                        </form>
+                    </div>
+
+                    <!-- Leaves Section -->
+                    <div id="leaves" style="display: none;">
+                        <h1 class="text-center">Leaves</h1>
+                        <!-- Leaves content here -->
+                    </div>
+
+                    <!-- Students Section -->
+                    <div id="students" style="display: none;">
+                        <h1 class="text-center">Add Student</h1>
+                        <form>
+                            <div class="mb-3">
+                                <label for="studentName" class="form-label">Student Name:</label>
+                                <input type="text" class="form-control" id="studentName" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="studentRegNumber" class="form-label">Register Number:</label>
+                                <input type="text" class="form-control" id="studentRegNumber" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="studentClass" class="form-label">Class:</label>
+                                <input type="text" class="form-control" id="studentClass" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="studentSection" class="form-label">Section:</label>
+                                <input type="text" class="form-control" id="studentSection" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="studentEmail" class="form-label">Email:</label>
+                                <input type="email" class="form-control" id="studentEmail" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Add Student</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS (Optional if you need JavaScript functionality) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
